@@ -39,15 +39,21 @@ document.querySelectorAll('nav ul li a').forEach(link => {
     link.addEventListener('click', closeMenu);
 });
 
-// Pause YouTube iframes when scrolled out of view
+// Pause/play YouTube iframes when scrolled out of/into view
+document.querySelectorAll('.featured iframe').forEach(iframe => {
+    const src = iframe.src;
+    if (src.indexOf('?') === -1) {
+        iframe.src = src + '?enablejsapi=1';
+    } else if (src.indexOf('enablejsapi') === -1) {
+        iframe.src = src + '&enablejsapi=1';
+    }
+});
+
 const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         const iframe = entry.target;
         if (!entry.isIntersecting) {
-            iframe.dataset.src = iframe.src;
-            iframe.src = '';
-        } else if (iframe.dataset.src) {
-            iframe.src = iframe.dataset.src;
+            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
         }
     });
 }, { threshold: 0.25 });
