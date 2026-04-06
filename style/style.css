@@ -477,7 +477,8 @@ body.dark .timeline-links a {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
+  gap: 30px;
 }
 
 .tech-stack .stack-imgs > img {
