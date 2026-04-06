@@ -13,36 +13,28 @@ function toggleTheme() {
 
 const burger = document.getElementById('burger');
 const ul = document.querySelector('nav ul');
-const homeAnchor = document.getElementById('home-anchor');
-const stackAnchor = document.getElementById('stack-anchor');
-const commAnchor = document.getElementById('comm-anchor');
-const eduAnchor = document.getElementById('edu-anchor');
-const expAnchor = document.getElementById('exp-anchor');
-const projAnchor = document.getElementById('proj-anchor');
-const talksAnchor = document.getElementById('talks-anchor');
+const overlay = document.getElementById('nav-overlay');
+
+function openMenu() {
+    ul.classList.add('show');
+    overlay.classList.add('active');
+}
+
+function closeMenu() {
+    ul.classList.remove('show');
+    overlay.classList.remove('active');
+}
 
 burger.addEventListener('click', () => {
-    ul.classList.toggle('show');
+    if (ul.classList.contains('show')) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
 });
 
-homeAnchor.addEventListener('click', () => {
-    ul.classList.toggle('show');
-});
-stackAnchor.addEventListener('click', () => {
-    ul.classList.toggle('show');
-});
-commAnchor.addEventListener('click', () => {
-    ul.classList.toggle('show');
-});
-eduAnchor.addEventListener('click', () => {
-    ul.classList.toggle('show');
-});
-expAnchor.addEventListener('click', () => {
-    ul.classList.toggle('show');
-});
-projAnchor.addEventListener('click', () => {
-    ul.classList.toggle('show');
-});
-talksAnchor.addEventListener('click', () => {
-    ul.classList.toggle('show');
+overlay.addEventListener('click', closeMenu);
+
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', closeMenu);
 });

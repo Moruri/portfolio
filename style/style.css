@@ -604,25 +604,31 @@ footer > span > a {
   color: inherit;
 }
 
-/* ========== RESPONSIVE ========== */
-@media screen and (max-width: 767.98px) {
-  .projects .project-section {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-
-  .experience-container {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-
-  .communities .communities-details {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-
+/* ========== NAV OVERLAY (click outside to close) ========== */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 98;
 }
 
-@media (max-width: 480px) {
+.nav-overlay.active {
+  display: block;
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablets */
+@media screen and (max-width: 767.98px) {
   .burger {
     display: block;
+  }
+
+  nav {
+    overflow: visible;
   }
 
   nav ul {
@@ -630,7 +636,7 @@ footer > span > a {
     background-color: #fff;
     flex-direction: column;
     position: fixed;
-    top: 80px;
+    top: 60px;
     left: 10%;
     width: 80%;
     text-align: center;
@@ -652,48 +658,52 @@ footer > span > a {
     margin: 15px;
   }
 
+  .projects .project-section {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-container {
+    grid-template-columns: 1fr;
+  }
+
+  .communities .communities-details {
+    grid-template-columns: 1fr;
+  }
+
+  .featured > iframe {
+    width: 100% !important;
+  }
+
   .profile {
     flex-direction: column;
     text-align: center;
+    align-items: center;
   }
 
   .profile > img {
-    width: 85%;
-    height: 80%;
-    margin-bottom: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+
+  .profile .bio-text {
+    width: 100%;
+    align-items: center;
   }
 
   .profile .bio-text .social-media {
-    display: flex;
     justify-content: center;
   }
 
   .communities .communities-details .details {
-    width: 100%;
-    margin: 10px 0;
     align-items: center;
-    justify-content: space-around;
-  }
-
-  .communities .communities-details .details .logos {
-    width: 100%;
   }
 
   .communities .communities-details .details .role,
   .communities .communities-details .details .description {
     text-align: center;
-  }
-
-  .projects .project-section .content {
-    margin: 0;
-  }
-
-  .projects .project-section {
-    grid-template-columns: 1fr;
-  }
-
-  .talks-container {
-    grid-template-columns: 1fr;
   }
 
   .education .edu {
@@ -705,5 +715,27 @@ footer > span > a {
     align-items: center;
     justify-content: center;
     text-align: center;
+  }
+
+  .tech-stack .stack-imgs {
+    justify-content: center;
+  }
+
+  .tech-stack .stack-imgs > img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .profile > img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .tech-stack .stack-imgs > img {
+    width: 55px;
+    height: 55px;
   }
 }
