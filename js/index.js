@@ -38,3 +38,20 @@ overlay.addEventListener('click', closeMenu);
 document.querySelectorAll('nav ul li a').forEach(link => {
     link.addEventListener('click', closeMenu);
 });
+
+// Pause YouTube iframes when scrolled out of view
+const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const iframe = entry.target;
+        if (!entry.isIntersecting) {
+            iframe.dataset.src = iframe.src;
+            iframe.src = '';
+        } else if (iframe.dataset.src) {
+            iframe.src = iframe.dataset.src;
+        }
+    });
+}, { threshold: 0.25 });
+
+document.querySelectorAll('.featured iframe').forEach(iframe => {
+    videoObserver.observe(iframe);
+});
