@@ -111,6 +111,7 @@ nav ul li a:hover::after {
   opacity: 1;
 }
 
+
 /* ========== PROFILE / HERO ========== */
 .profile {
   padding: 20px;
@@ -733,6 +734,7 @@ footer > span > a {
     width: 70px;
     height: 70px;
   }
+
 }
 
 /* Small phones */

@@ -61,3 +61,4 @@ const videoObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.featured iframe').forEach(iframe => {
     videoObserver.observe(iframe);
 });
+
